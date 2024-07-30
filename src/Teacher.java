@@ -1,3 +1,3 @@
-public class Teacher {
-
+public class Teacher extends StudentManagement{
+    
 }

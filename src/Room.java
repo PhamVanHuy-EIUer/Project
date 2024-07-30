@@ -1,3 +1,3 @@
-public class Room {
+public class Room extends StudentManagement{
 
 }
