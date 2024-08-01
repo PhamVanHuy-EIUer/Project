@@ -30,7 +30,14 @@ public class StudentManagement {
         rooms.add(room);
     }
     public void removeCourse(String idCourse) {
-        courses.remove(idCourse);
+        Course c = null;
+        for(Course course :courses){
+            if(course.getCode().equals(idCourse)){
+                c = course;
+                break;
+            }
+        }
+        courses.remove(c);
     }
 
     public boolean borrowRoom(String infor) {
@@ -73,6 +80,6 @@ public class StudentManagement {
         }
         c.setNumStudentInScore(numInCourse);
     }
-
+    
     
 }
