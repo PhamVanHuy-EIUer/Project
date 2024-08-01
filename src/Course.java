@@ -7,18 +7,18 @@ public class Course extends StudentManagement{
     private String day;
     private String time;
     private double scoreToPass;
-    private ArrayList<Student> numStudentInScore = new ArrayList<>();
+    private ArrayList<Student> numStudentInCourse = new ArrayList<>();
     public Course() {
     }
     public Course(String code, String name, double fee, String day, String time, double scoreToPass,
-            ArrayList<Student> numStudentInScore) {
+            ArrayList<Student> numStudentInCourse) {
         this.code = code;
         this.name = name;
         this.fee = fee;
         this.day = day;
         this.time = time;
         this.scoreToPass = scoreToPass;
-        this.numStudentInScore = numStudentInScore;
+        this.numStudentInCourse = numStudentInCourse;
     }
     public String getCode() {
         return code;
@@ -50,11 +50,11 @@ public class Course extends StudentManagement{
     public void setTime(String time) {
         this.time = time;
     }
-    public ArrayList<Student> getNumStudentInScore() {
-        return numStudentInScore;
+    public ArrayList<Student> getNumStudentInCourse() {
+        return numStudentInCourse;
     }
-    public void setNumStudentInScore(ArrayList<Student> numStudentInScore) {
-        this.numStudentInScore = numStudentInScore;
+    public void setNumStudentInScore(ArrayList<Student> numStudentInCourse) {
+        this.numStudentInCourse = numStudentInCourse;
     }
     public double getScoreToPass() {
         return scoreToPass;
@@ -67,10 +67,11 @@ public class Course extends StudentManagement{
             return true;
         return false;
     }
+    
     @Override
     public String toString() {
         return "Course [code=" + code + ", name=" + name + ", fee=" + fee + ", day=" + day + ", time=" + time
-                + ", scoreToPass=" + scoreToPass + ", numStudentInScore=" + numStudentInScore + "]";
+                + ", scoreToPass=" + scoreToPass + ", numStudentInScore=" + numStudentInCourse + "]";
     }
     
 }
