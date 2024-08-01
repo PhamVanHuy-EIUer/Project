@@ -6,9 +6,11 @@ public class Student extends StudentManagement{
    private String dateOfBirth;
    private String email;
    private String major;
+   private double score;
 public Student() {
 }
-public Student(String name, String id, String gender, String address, String dateOfBirth, String email, String major) {
+public Student(String name, String id, String gender, String address, String dateOfBirth, String email, String major,
+        double score) {
     this.name = name;
     this.id = id;
     this.gender = gender;
@@ -16,6 +18,7 @@ public Student(String name, String id, String gender, String address, String dat
     this.dateOfBirth = dateOfBirth;
     this.email = email;
     this.major = major;
+    this.score = score;
 }
 public String getName() {
     return name;
@@ -59,10 +62,12 @@ public String getMajor() {
 public void setMajor(String major) {
     this.major = major;
 }
-@Override
-public String toString() {
-    return "Student [name=" + name + ", id=" + id + ", gender=" + gender + ", address=" + address + ", dateOfBirth="
-            + dateOfBirth + ", email=" + email + ", major=" + major + "]";
+public double getScore() {
+    return score;
+}
+public void setScore(double score) {
+    this.score = score;
 }
    
+
 }

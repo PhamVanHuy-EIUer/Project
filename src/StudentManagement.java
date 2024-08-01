@@ -28,8 +28,15 @@ public class StudentManagement {
     public ArrayList<Room> searchRoom(String keyword){
         ArrayList<Room> result =new ArrayList<>();
         for (Room room: rooms){
-            if()
+            if(room.getNumber().equals(keyword)){
+                result.add(room);
+            }
         }
+        return result;
+        
+    }
+    public boolean isAvailable(Course course, ){
+
     }
     
 }
