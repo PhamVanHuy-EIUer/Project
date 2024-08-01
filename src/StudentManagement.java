@@ -25,4 +25,11 @@ public class StudentManagement {
     public void addRoom(Room room){
         rooms.add(room);
     }
+    public ArrayList<Room> searchRoom(String keyword){
+        ArrayList<Room> result =new ArrayList<>();
+        for (Room room: rooms){
+            if()
+        }
+    }
+    
 }
