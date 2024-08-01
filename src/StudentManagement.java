@@ -29,6 +29,9 @@ public class StudentManagement {
     public void addRoom(Room room) {
         rooms.add(room);
     }
+    public void removeCourse(String idCourse) {
+        courses.remove(idCourse);
+    }
 
     public boolean borrowRoom(String infor) {
         Room room = null;
@@ -58,15 +61,18 @@ public class StudentManagement {
             for (Student student : students) {
                 if (student.getId().equals(id)) {
                     numInCourse.add(student);
+                    break;
                 }
             }
         }
         Course c = null;
-        for(Course course : courses){
-            if(course.getCode().equals(codeOfCourse)){
+        for (Course course : courses) {
+            if (course.getCode().equals(codeOfCourse)) {
                 c = course;
             }
         }
         c.setNumStudentInScore(numInCourse);
     }
+
+    
 }

@@ -10,16 +10,7 @@ public class Course extends StudentManagement{
     private ArrayList<Student> numStudentInCourse = new ArrayList<>();
     public Course() {
     }
-    public Course(String code, String name, double fee, String day, String time, double scoreToPass,
-            ArrayList<Student> numStudentInCourse) {
-        this.code = code;
-        this.name = name;
-        this.fee = fee;
-        this.day = day;
-        this.time = time;
-        this.scoreToPass = scoreToPass;
-        this.numStudentInCourse = numStudentInCourse;
-    }
+    
     public String getCode() {
         return code;
     }
