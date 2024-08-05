@@ -1,4 +1,7 @@
-public class Room extends StudentManagement{
+import java.util.Scanner;
+
+public class Room extends Course{
+    static Scanner sc = new Scanner(System.in);
     private String number;
     private int capacity;
     private boolean isEmpty;
@@ -26,6 +29,13 @@ public class Room extends StudentManagement{
     }
     public void setEmpty(boolean isEmpty) {
         this.isEmpty = isEmpty;
+    }
+    public void addRoom(){
+        System.out.println("Enter number : ");
+        setNumber(sc.nextLine());
+        System.out.println("Enter capacity : ");
+        setCapacity(sc.nextInt());
+        setEmpty(true);
     }
     
 }

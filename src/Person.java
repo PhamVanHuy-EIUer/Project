@@ -1,11 +1,22 @@
-public class Person extends Course{
+import java.util.Scanner;
+
+public abstract class Person extends Course{
+    static Scanner sc = new Scanner(System.in);
     private String name;
-    private String Id;
+    private String id;
     private String gender;
     private String dateOfBirth;
     private String address;
     private String major;
     public Person() {
+    }
+    public Person(String name, String id, String gender, String dateOfBirth, String address, String major) {
+        this.name = name;
+        this.id = id;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.major = major;
     }
     public String getName() {
         return name;
@@ -14,10 +25,10 @@ public class Person extends Course{
         this.name = name;
     }
     public String getId() {
-        return Id;
+        return id;
     }
-    public void setId(String Id) {
-        this.Id = Id;
+    public void setId(String id) {
+        this.id = id;
     }
     public String getGender() {
         return gender;
@@ -43,5 +54,28 @@ public class Person extends Course{
     public void setMajor(String major) {
         this.major = major;
     }
-    
+    public void Input(){
+        System.out.println("Enter Name : " );
+        setName(sc.nextLine());
+        System.out.println(("Enter ID: "));
+        setId(sc.nextLine());
+        System.out.println("Enter gender : ");
+        setGender(sc.nextLine());
+        System.out.println("Enter date of birth : ");
+        setDateOfBirth(sc.nextLine());
+        System.out.println("Enter address : ");
+        setAddress(sc.nextLine());
+        System.out.println("Enter major : ");
+        setMajor(sc.nextLine());
+    }
+    public void Output(){
+        System.out.println("Name : " + getName());
+        System.out.println("ID : " + getCode());
+        System.out.println("Gender : " + getGender());
+        System.out.println("Date of birth : " + getDateOfBirth());
+        System.out.println("Adress : " + getAddress());
+        System.out.println("Major : " + getMajor());
+    }
 }
+
+    
