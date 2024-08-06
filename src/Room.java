@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Room extends Course{
@@ -5,6 +6,8 @@ public class Room extends Course{
     private String number;
     private int capacity;
     private boolean isEmpty;
+    private ArrayList<Course> courseInRoom;
+
     public Room(String number, int capacity, boolean isEmpty) {
         this.number = number;
         this.capacity = capacity;
@@ -36,6 +39,12 @@ public class Room extends Course{
         System.out.println("Enter capacity : ");
         setCapacity(sc.nextInt());
         setEmpty(true);
+        sc.nextLine();
+    }
+    public ArrayList<Course> setRoomInCourse(ArrayList<Course> courses){
+        courseInRoom = new ArrayList<>();
+        if()
+
     }
     
 }

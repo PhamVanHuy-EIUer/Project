@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public abstract class Person extends Course{
+public abstract class Person {
     static Scanner sc = new Scanner(System.in);
     private String name;
     private String id;
@@ -70,7 +70,7 @@ public abstract class Person extends Course{
     }
     public void Output(){
         System.out.println("Name : " + getName());
-        System.out.println("ID : " + getCode());
+        System.out.println("ID : " + getId());
         System.out.println("Gender : " + getGender());
         System.out.println("Date of birth : " + getDateOfBirth());
         System.out.println("Adress : " + getAddress());

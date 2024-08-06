@@ -1,7 +1,8 @@
 import java.util.ArrayList;
+
 import java.util.Scanner;
 
-public class Course extends StudentManagement {
+public class Course extends StudentManagement{
     Scanner sc = new Scanner(System.in);
     private String code;
     private String name;
@@ -10,14 +11,12 @@ public class Course extends StudentManagement {
     private String timeEnd;
     private double scoreToPass;
     private String day;
+    private ArrayList<Student> studentsInCourse;
 
     public Course() {
     }
 
-    public Course(ArrayList<Student> students, ArrayList<Teacher> teachers, ArrayList<Course> courses,
-            ArrayList<Room> rooms) {
-        super(students, teachers, courses, rooms);
-    }
+    
 
     public String getCode() {
         return code;
@@ -79,6 +78,23 @@ public class Course extends StudentManagement {
         this.day = day;
     }
 
+    public ArrayList<Student> setStudentsInCourse(ArrayList<Student> students){
+        studentsInCourse = new ArrayList<>();
+        System.out.println("Enter number of students : ");
+        int n =sc.nextInt();
+        sc.nextLine();
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter student ID to add to course: ");
+            String id = sc.nextLine();
+            for (Student student : students) {
+                if (student.getId().equals(id)) {
+                    studentsInCourse.add(student);
+                    break;
+                }
+            }
+        }
+        return studentsInCourse;
+    }
     public void addCourse() {
         System.out.println("Enter code");
         setCode(sc.nextLine());
@@ -92,6 +108,7 @@ public class Course extends StudentManagement {
         setTimeEnd(sc.nextLine());
         System.out.println("Enter score to Pass");
         setScoreToPass(sc.nextDouble());
+        sc.nextLine();
     }
 
 }
