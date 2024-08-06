@@ -87,7 +87,8 @@ public class StudentManagement {
         c.setTeacherInCourse(teacherInCourse);
 
     }
-    public void removeTeachers(){
+
+    public void removeTeachers() {
         System.out.println("Enter number to remove teachers: ");
         int n = sc.nextInt();
         sc.nextLine();
@@ -111,7 +112,9 @@ public class StudentManagement {
         }
     }
 
-    public void addRooms(int n) {
+    public void addRooms() {
+        int n = sc.nextInt();
+        sc.nextLine();
         for (int i = 0; i < n; i++) {
             Room r = new Room();
             r.addRoom();
@@ -119,12 +122,15 @@ public class StudentManagement {
         }
     }
 
-    public void addCourses(int n) {
+    public void addCourses() {
+        int n = sc.nextInt();
+        sc.nextLine();
         for (int i = 0; i < n; i++) {
             Course c = new Course();
             c.addCourse();
             courses.add(c);
         }
+
     }
 
     public ArrayList<Course> searchCourse() {
@@ -180,8 +186,42 @@ public class StudentManagement {
         return result;
     }
 
-    public void removeStudent() {
+    public void courseInRoom() {
+        ArrayList<Course> courseInRoom = new ArrayList<>();
+        System.out.println("Enter number of course to add in room: ");
+        int n = sc.nextInt();
+        sc.nextLine();
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter course: ");
+            String code = sc.nextLine();
+            System.out.println("Enter ID room");
+            String id = sc.nextLine();
+            for (Course course : courses) {
+                if (course.getCode().equals(code)) {
+                    for (Room room : rooms) {
+                        if (room.getNumber().equals(id)) {
+                            boolean flat = true;
+                            for (int j = 0; j < room.getCourseInRoom().size(); j++) {
+                                if (course.getDay().equals(room.getCourseInRoom().get(j).getDay())
+                                        && course.getTimeStart().equals(room.getCourseInRoom().get(j).getTimeStart())
+                                        && course.getTimeEnd().equals(room.getCourseInRoom().get(j).getTimeEnd())
+                                        && (course.getStudentInCourse().size() + 1) == room.getCapacity()
+                                        && !room.isEmpty()) {
 
+                                    flat = false;
+                                    break;
+                                } else {
+                                    courseInRoom.add(course);
+                                }
+                            }
+                            if (!flat) {
+                                System.out.println("This room is invalid.");
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
 }

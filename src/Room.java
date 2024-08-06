@@ -13,6 +13,15 @@ public class Room extends Course{
         this.capacity = capacity;
         this.isEmpty = isEmpty;
     }
+    
+    public ArrayList<Course> getCourseInRoom() {
+        return courseInRoom;
+    }
+
+    public void setCourseInRoom(ArrayList<Course> courseInRoom) {
+        courseInRoom.addAll(courseInRoom);
+    }
+
     public Room() {
     }
     public String getNumber() {
@@ -38,7 +47,8 @@ public class Room extends Course{
         setNumber(sc.nextLine());
         System.out.println("Enter capacity : ");
         setCapacity(sc.nextInt());
-        setEmpty(true);
+        System.out.println("Enter status of room (only use true or false)");
+        setEmpty(sc.nextBoolean());
         sc.nextLine();
     }
     
