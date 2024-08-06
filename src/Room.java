@@ -41,10 +41,6 @@ public class Room extends Course{
         setEmpty(true);
         sc.nextLine();
     }
-    public ArrayList<Course> setRoomInCourse(ArrayList<Course> courses){
-        courseInRoom = new ArrayList<>();
-        if()
-
-    }
+    
     
 }

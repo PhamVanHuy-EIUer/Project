@@ -11,12 +11,24 @@ public class Course extends StudentManagement{
     private String timeEnd;
     private double scoreToPass;
     private String day;
-    private ArrayList<Student> studentsInCourse;
+    private ArrayList<Student> studentInCourse;
 
     public Course() {
     }
 
-    
+
+
+    public ArrayList<Student> getStudentInCourse() {
+        return studentInCourse;
+    }
+
+
+
+    public void setStudentInCourse(ArrayList<Student> s) {
+        studentInCourse.addAll(s);
+    }
+
+
 
     public String getCode() {
         return code;
@@ -78,23 +90,6 @@ public class Course extends StudentManagement{
         this.day = day;
     }
 
-    public ArrayList<Student> setStudentsInCourse(ArrayList<Student> students){
-        studentsInCourse = new ArrayList<>();
-        System.out.println("Enter number of students : ");
-        int n =sc.nextInt();
-        sc.nextLine();
-        for (int i = 0; i < n; i++) {
-            System.out.println("Enter student ID to add to course: ");
-            String id = sc.nextLine();
-            for (Student student : students) {
-                if (student.getId().equals(id)) {
-                    studentsInCourse.add(student);
-                    break;
-                }
-            }
-        }
-        return studentsInCourse;
-    }
     public void addCourse() {
         System.out.println("Enter code");
         setCode(sc.nextLine());

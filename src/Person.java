@@ -7,16 +7,16 @@ public abstract class Person {
     private String gender;
     private String dateOfBirth;
     private String address;
-    private String major;
+    private String idMajor;
     public Person() {
     }
-    public Person(String name, String id, String gender, String dateOfBirth, String address, String major) {
+    public Person(String name, String id, String gender, String dateOfBirth, String address, String idMajor) {
         this.name = name;
         this.id = id;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
-        this.major = major;
+        this.idMajor = idMajor;
     }
     public String getName() {
         return name;
@@ -48,11 +48,11 @@ public abstract class Person {
     public void setAddress(String address) {
         this.address = address;
     }
-    public String getMajor() {
-        return major;
+    public String getIdMajor() {
+        return idMajor;
     }
-    public void setMajor(String major) {
-        this.major = major;
+    public void setIdMajor(String idMajor) {
+        this.idMajor = idMajor;
     }
     public void Input(){
         System.out.println("Enter Name : " );
@@ -66,7 +66,7 @@ public abstract class Person {
         System.out.println("Enter address : ");
         setAddress(sc.nextLine());
         System.out.println("Enter major : ");
-        setMajor(sc.nextLine());
+        setIdMajor(sc.nextLine());
     }
     public void Output(){
         System.out.println("Name : " + getName());
@@ -74,7 +74,7 @@ public abstract class Person {
         System.out.println("Gender : " + getGender());
         System.out.println("Date of birth : " + getDateOfBirth());
         System.out.println("Adress : " + getAddress());
-        System.out.println("Major : " + getMajor());
+        System.out.println("Major : " + getIdMajor());
     }
 }
 

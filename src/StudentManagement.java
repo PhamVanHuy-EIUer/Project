@@ -25,11 +25,20 @@ public class StudentManagement {
 
     public void addStudents(int n) {
         for (int i = 0; i < n; i++) {
+            ArrayList<Student> studentInCourse = new ArrayList<>();
+            Course c = new Course();
             Student s = new Student();
             s.Input();
             students.add(s);
+            for (Course course: courses){
+                if(course.getCode().equals(s.getId())){
+                    studentInCourse.add(s);
+                }
+            }
+            c.setStudentInCourse(studentInCourse);
+            }
         }
-    }
+    
 
     public void addTeachers(int n) {
         for (int i = 0; i < n; i++) {
@@ -104,6 +113,9 @@ public class StudentManagement {
             }
         }
         return result;
+    }
+    public void removeStudent(){
+        
     }
     
 }
