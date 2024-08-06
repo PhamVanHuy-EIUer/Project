@@ -23,28 +23,91 @@ public class StudentManagement {
         this.rooms = rooms;
     }
 
-    public void addStudents(int n) {
+    public void addStudents() {
+        System.out.println("Enter number to add students");
+        int n = sc.nextInt();
+        sc.nextLine();
+        Course c = new Course();
+        ArrayList<Student> studentInCourse = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            ArrayList<Student> studentInCourse = new ArrayList<>();
-            Course c = new Course();
             Student s = new Student();
             s.Input();
             students.add(s);
-            for (Course course: courses){
-                if(course.getCode().equals(s.getId())){
+            for (Course course : courses) {
+                if (course.getCode().equals(s.getId())) {
                     studentInCourse.add(s);
                 }
             }
-            c.setStudentInCourse(studentInCourse);
+        }
+        c.setStudentInCourse(studentInCourse);
+
+    }
+
+    public void removeStudents() {
+        System.out.println("Enter number to remove students: ");
+        int n = sc.nextInt();
+        sc.nextLine();
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter ID: ");
+            String id = sc.nextLine();
+            for (int j = 0; j < students.size(); j++) {
+                if (students.get(j).getId().equals(id)) {
+                    students.remove(j);
+                    break;
+                }
+            }
+            for (int k = 0; k < courses.size(); k++) {
+                for (int z = 0; z < courses.get(i).getStudentInCourse().size(); z++) {
+                    if (courses.get(k).getStudentInCourse().get(z).getId().equals(id)) {
+                        courses.get(k).getStudentInCourse().get(z).getId().equals(id);
+                        break;
+                    }
+                }
             }
         }
-    
+    }
 
-    public void addTeachers(int n) {
+    public void addTeachers() {
+        ArrayList<Teacher> teacherInCourse = new ArrayList<>();
+        Course c = new Course();
+        System.out.println("Enter number to add teachers: ");
+        int n = sc.nextInt();
+        sc.nextLine();
         for (int i = 0; i < n; i++) {
             Teacher t = new Teacher();
             t.Input();
             teachers.add(t);
+            for (Course course : courses) {
+                if (course.getCode().equals(t.getIdMajor())) {
+                    teacherInCourse.add(t);
+                    break;
+                }
+            }
+        }
+        c.setTeacherInCourse(teacherInCourse);
+
+    }
+    public void removeTeachers(){
+        System.out.println("Enter number to remove teachers: ");
+        int n = sc.nextInt();
+        sc.nextLine();
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter ID: ");
+            String id = sc.nextLine();
+            for (int j = 0; j < teachers.size(); j++) {
+                if (teachers.get(j).getId().equals(id)) {
+                    teachers.remove(j);
+                    break;
+                }
+            }
+            for (int k = 0; k < courses.size(); k++) {
+                for (int z = 0; z < courses.get(i).getTeacherInCourse().size(); z++) {
+                    if (courses.get(k).getTeacherInCourse().get(z).getId().equals(id)) {
+                        courses.get(k).getTeacherInCourse().get(z).getId().equals(id);
+                        break;
+                    }
+                }
+            }
         }
     }
 
@@ -83,39 +146,42 @@ public class StudentManagement {
         System.out.println("Enter ID: ");
         String id = sc.nextLine();
         for (Student student : students) {
-            if(student.getId().equals(id)){
+            if (student.getId().equals(id)) {
                 result.add(student);
                 break;
             }
         }
         return result;
     }
-    public ArrayList<Room> searchRoom(){
+
+    public ArrayList<Room> searchRoom() {
         ArrayList<Room> result = new ArrayList<>();
         System.out.println("Enter number: ");
         String num = sc.nextLine();
-        for(Room room : rooms){
-            if(room.getCode().equals(num)){
+        for (Room room : rooms) {
+            if (room.getCode().equals(num)) {
                 result.add(room);
                 break;
             }
         }
         return result;
     }
-    public ArrayList<Teacher> searchTeacher(){
+
+    public ArrayList<Teacher> searchTeacher() {
         ArrayList<Teacher> result = new ArrayList<>();
         System.out.println("Enter ID: ");
         String id = sc.nextLine();
-        for(Teacher teacher : teachers){
-            if(teacher.getId().equals(id)){
+        for (Teacher teacher : teachers) {
+            if (teacher.getId().equals(id)) {
                 result.add(teacher);
                 break;
             }
         }
         return result;
     }
-    public void removeStudent(){
-        
+
+    public void removeStudent() {
+
     }
-    
+
 }

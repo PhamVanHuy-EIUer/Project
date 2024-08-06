@@ -12,14 +12,28 @@ public class Course extends StudentManagement{
     private double scoreToPass;
     private String day;
     private ArrayList<Student> studentInCourse;
+    private ArrayList<Teacher> teacherInCourse;
 
     public Course() {
     }
 
 
 
+    public ArrayList<Teacher> getTeacherInCourse() {
+        return teacherInCourse;
+    }
+
+
+
+    public void setTeacherInCourse(ArrayList<Teacher> t) {
+        teacherInCourse.addAll(t);
+    }
+
+
+
     public ArrayList<Student> getStudentInCourse() {
         return studentInCourse;
+        
     }
 
 
