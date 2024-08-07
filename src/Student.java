@@ -26,6 +26,7 @@ public class Student extends Person {
     }
     @Override
     public void Input() {
+        
         super.Input();
         System.out.println("Enter Score : ");
         setScore(sc.nextDouble());

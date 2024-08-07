@@ -24,18 +24,19 @@ public class StudentManagement {
     }
 
     public void addStudents() {
-        System.out.println("Enter number to add students");
+        ArrayList<Student> studentInCourse = new ArrayList<>();
+        Course c = new Course();
+        System.out.println("Enter number to add teachers: ");
         int n = sc.nextInt();
         sc.nextLine();
-        Course c = new Course();
-        ArrayList<Student> studentInCourse = new ArrayList<>();
         for (int i = 0; i < n; i++) {
             Student s = new Student();
             s.Input();
             students.add(s);
             for (Course course : courses) {
-                if (course.getCode().equals(s.getId())) {
+                if (course.getCode().equals(s.getIdMajor())) {
                     studentInCourse.add(s);
+                    break;
                 }
             }
         }

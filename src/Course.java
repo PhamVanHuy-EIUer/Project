@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Course extends StudentManagement{
-    Scanner sc = new Scanner(System.in);
+    static Scanner sc = new Scanner(System.in);
     private String code;
     private String name;
     private double fee;
@@ -41,7 +41,6 @@ public class Course extends StudentManagement{
     public void setStudentInCourse(ArrayList<Student> s) {
         studentInCourse.addAll(s);
     }
-
 
 
     public String getCode() {
@@ -105,6 +104,7 @@ public class Course extends StudentManagement{
     }
 
     public void addCourse() {
+        
         System.out.println("Enter code");
         setCode(sc.nextLine());
         System.out.println("Enter Name");
@@ -120,4 +120,13 @@ public class Course extends StudentManagement{
         sc.nextLine();
     }
 
+
+
+    @Override
+    public String toString() {
+        return "Course [code=" + code + ", name=" + name + ", fee=" + fee + ", timeStart=" + timeStart + ", timeEnd="
+                + timeEnd + ", scoreToPass=" + scoreToPass + ", day=" + day + ", studentInCourse=" + studentInCourse
+                + ", teacherInCourse=" + teacherInCourse + "]";
+    }
+    
 }

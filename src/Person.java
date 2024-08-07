@@ -55,6 +55,7 @@ public abstract class Person {
         this.idMajor = idMajor;
     }
     public void Input(){
+        
         System.out.println("Enter Name : " );
         setName(sc.nextLine());
         System.out.println(("Enter ID: "));
