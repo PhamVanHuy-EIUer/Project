@@ -7,11 +7,15 @@ public class Room extends Course{
     private int capacity;
     private boolean isEmpty;
     private ArrayList<Course> courseInRoom;
-
-    public Room(String number, int capacity, boolean isEmpty) {
+    
+    public Room (){
+        courseInRoom = new ArrayList<>();
+    }
+    public Room(String number, int capacity, boolean isEmpty, ArrayList<Course> courseInRoom) {
         this.number = number;
         this.capacity = capacity;
         this.isEmpty = isEmpty;
+        this.courseInRoom = courseInRoom;
     }
     
     public ArrayList<Course> getCourseInRoom() {
@@ -22,8 +26,6 @@ public class Room extends Course{
         courseInRoom.addAll(courseInRoom);
     }
 
-    public Room() {
-    }
     public String getNumber() {
         return number;
     }

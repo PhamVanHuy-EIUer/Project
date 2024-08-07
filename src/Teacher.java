@@ -25,7 +25,7 @@ public class Teacher extends Person{
     public void Input() {
         super.Input();
         System.out.println("Enter KPA : ");
-        setKpa(kpa);
+        setKpa(sc.nextDouble());
     }
 
     @Override

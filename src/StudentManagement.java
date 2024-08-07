@@ -23,25 +23,55 @@ public class StudentManagement {
         this.rooms = rooms;
     }
 
+    
+    public ArrayList<Student> getStudents() {
+        return students;
+    }
+
+    public ArrayList<Teacher> getTeachers() {
+        return teachers;
+    }
+
+    public ArrayList<Course> getCourses() {
+        return courses;
+    }
+
+    public ArrayList<Room> getRooms() {
+        return rooms;
+    }
+    public void listStudents(){
+        System.out.println("------------ALL INFORMATION OF STUDENT--------------");
+        int n =1;
+        for(Student student :students){
+            System.out.println(n);
+            student.Output();
+            n++;
+        }
+
+    }
+
     public void addStudents() {
-        ArrayList<Student> studentInCourse = new ArrayList<>();
-        Course c = new Course();
-        System.out.println("Enter number to add teachers: ");
+        System.out.println("Enter number to add students: ");
         int n = sc.nextInt();
         sc.nextLine();
         for (int i = 0; i < n; i++) {
             Student s = new Student();
             s.Input();
             students.add(s);
-            for (Course course : courses) {
-                if (course.getCode().equals(s.getIdMajor())) {
-                    studentInCourse.add(s);
+        }
+    }
+    public void addStudentsInCourse(){
+        ArrayList<Student> addStudents = new ArrayList<>();
+        Course c = new Course();
+        for(Student student:students){
+            for(Course course : courses){
+                if(student.getIdMajor().equals(course.getCode())){
+                    addStudents.add(student);
                     break;
                 }
             }
         }
-        c.setStudentInCourse(studentInCourse);
-
+        c.setStudentInCourse(addStudents);
     }
 
     public void removeStudents() {
@@ -56,6 +86,9 @@ public class StudentManagement {
                     students.remove(j);
                     break;
                 }
+                else{
+                    System.out.println("ID is available.");
+                }
             }
             for (int k = 0; k < courses.size(); k++) {
                 for (int z = 0; z < courses.get(i).getStudentInCourse().size(); z++) {
@@ -69,8 +102,6 @@ public class StudentManagement {
     }
 
     public void addTeachers() {
-        ArrayList<Teacher> teacherInCourse = new ArrayList<>();
-        Course c = new Course();
         System.out.println("Enter number to add teachers: ");
         int n = sc.nextInt();
         sc.nextLine();
@@ -78,15 +109,23 @@ public class StudentManagement {
             Teacher t = new Teacher();
             t.Input();
             teachers.add(t);
-            for (Course course : courses) {
-                if (course.getCode().equals(t.getIdMajor())) {
-                    teacherInCourse.add(t);
+        }
+    }
+    public void addTeachersInCourse(){
+        ArrayList<Teacher> addTeachers = new ArrayList<>();
+        Course c = new Course();
+        for(Teacher teacher : teachers){
+            for(Course course : courses){
+                if(teacher.getIdMajor().equals(course.getCode())){
+                    addTeachers.add(teacher);
                     break;
+                }
+                else{
+                    System.out.println("ID is available");
                 }
             }
         }
-        c.setTeacherInCourse(teacherInCourse);
-
+        c.setTeacherInCourse(addTeachers);
     }
 
     public void removeTeachers() {
@@ -114,6 +153,7 @@ public class StudentManagement {
     }
 
     public void addRooms() {
+        System.out.println("Enter number of rooms: ");
         int n = sc.nextInt();
         sc.nextLine();
         for (int i = 0; i < n; i++) {
@@ -124,6 +164,7 @@ public class StudentManagement {
     }
 
     public void addCourses() {
+        System.out.println("Enter number of courses: ");
         int n = sc.nextInt();
         sc.nextLine();
         for (int i = 0; i < n; i++) {

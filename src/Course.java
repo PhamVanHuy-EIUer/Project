@@ -15,6 +15,15 @@ public class Course extends StudentManagement{
     private ArrayList<Teacher> teacherInCourse;
 
     public Course() {
+        studentInCourse = new ArrayList<>();
+        teacherInCourse = new ArrayList<>();
+    }
+
+
+
+    public Course( ArrayList<Student> studentInCourse, ArrayList<Teacher> teacherInCourse) {
+        this.studentInCourse = studentInCourse;
+        this.teacherInCourse = teacherInCourse;
     }
 
 
