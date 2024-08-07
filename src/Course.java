@@ -35,7 +35,7 @@ public class Course extends StudentManagement{
 
 
     public void setTeacherInCourse(ArrayList<Teacher> t) {
-        teacherInCourse.addAll(t);
+        this.teacherInCourse = t;
     }
 
 
@@ -48,7 +48,7 @@ public class Course extends StudentManagement{
 
 
     public void setStudentInCourse(ArrayList<Student> s) {
-        studentInCourse.addAll(s);
+        this.studentInCourse = s;
     }
 
 

@@ -61,17 +61,15 @@ public class StudentManagement {
         }
     }
     public void addStudentsInCourse(){
+        for(Course course : courses){
         ArrayList<Student> addStudents = new ArrayList<>();
-        Course c = new Course();
-        for(Student student:students){
-            for(Course course : courses){
+            for(Student student : students){
                 if(student.getIdMajor().equals(course.getCode())){
                     addStudents.add(student);
-                    break;
                 }
             }
+        course.setStudentInCourse(addStudents);
         }
-        c.setStudentInCourse(addStudents);
     }
 
     public void removeStudents() {
@@ -112,20 +110,15 @@ public class StudentManagement {
         }
     }
     public void addTeachersInCourse(){
-        ArrayList<Teacher> addTeachers = new ArrayList<>();
-        Course c = new Course();
-        for(Teacher teacher : teachers){
-            for(Course course : courses){
+        for(Course course : courses){
+            ArrayList<Teacher> addTeachers = new ArrayList<>();
+            for(Teacher teacher : teachers){
                 if(teacher.getIdMajor().equals(course.getCode())){
                     addTeachers.add(teacher);
-                    break;
-                }
-                else{
-                    System.out.println("ID is available");
                 }
             }
+            course.setTeacherInCourse(addTeachers);            
         }
-        c.setTeacherInCourse(addTeachers);
     }
 
     public void removeTeachers() {
@@ -227,43 +220,52 @@ public class StudentManagement {
         }
         return result;
     }
+    public void sortStudents(){
+        students.sort((s1,s2)->{
+            if(s1.getClass().toString().compareTo(s2.getClass().toString()) == 0){
+                return s1.getId().compareTo(s2.getId());
+            }
+            return s1.getClass().toString().compareTo(s2.getClass().toString());
+        });
+    }
 
     public void courseInRoom() {
-        ArrayList<Course> courseInRoom = new ArrayList<>();
-        System.out.println("Enter number of course to add in room: ");
-        int n = sc.nextInt();
-        sc.nextLine();
-        for (int i = 0; i < n; i++) {
-            System.out.println("Enter course: ");
-            String code = sc.nextLine();
-            System.out.println("Enter ID room");
-            String id = sc.nextLine();
-            for (Course course : courses) {
-                if (course.getCode().equals(code)) {
-                    for (Room room : rooms) {
-                        if (room.getNumber().equals(id)) {
+        
+        System.out.println("Enter id room: ");
+        String number = sc.nextLine();
+        for(Room room : rooms) {
+            if(!room.isEmpty()){
+                System.out.println("Room is unavailable");
+            }
+            else if(room.getNumber().equals(number)){
+                ArrayList<Course> addCourseInRoom = new ArrayList<>();
+                System.out.println("Enter number of courses in this room: ");
+                int n = sc.nextInt();
+                sc.nextLine();
+                for(int i = 0;i < n;i++){
+                    System.out.println("Enter code of course: ");
+                    String code =sc.nextLine();
+                    for(Course course : courses){
+                        if(course.getCode().equals(code)){
                             boolean flat = true;
-                            for (int j = 0; j < room.getCourseInRoom().size(); j++) {
-                                if (course.getDay().equals(room.getCourseInRoom().get(j).getDay())
-                                        && course.getTimeStart().equals(room.getCourseInRoom().get(j).getTimeStart())
-                                        && course.getTimeEnd().equals(room.getCourseInRoom().get(j).getTimeEnd())
-                                        && (course.getStudentInCourse().size() + 1) == room.getCapacity()
-                                        && !room.isEmpty()) {
-
-                                    flat = false;
+                            for(int j = 0 ; j < room.getCourseInRoom().size();j++){
+                                if(room.getCourseInRoom().get(j).getDay().equals(course.getDay()) 
+                                && room.getCourseInRoom().get(j).getTimeStart().equals(course.getTimeStart())
+                                && room.getCourseInRoom().get(j).getTimeEnd().equals(course.getTimeEnd())){
+                                    System.out.println("This room is unavailable");
+                                    flat =false;
                                     break;
-                                } else {
-                                    courseInRoom.add(course);
                                 }
                             }
-                            if (!flat) {
-                                System.out.println("This room is invalid.");
+                            if(flat){
+                                addCourseInRoom.add(course);
                             }
                         }
                     }
                 }
+                room.setCourseInRoom(addCourseInRoom);
             }
-        }
-    }
-
+        } 
+    }      
+    
 }
