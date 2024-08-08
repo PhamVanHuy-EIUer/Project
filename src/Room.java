@@ -23,7 +23,7 @@ public class Room extends Course{
     }
 
     public void setCourseInRoom(ArrayList<Course> courseInRoom) {
-        this.courseInRoom = courseInRoom;
+        this.courseInRoom.addAll(courseInRoom);
     }
 
     public String getNumber() {

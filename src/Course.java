@@ -7,8 +7,6 @@ public class Course extends StudentManagement{
     private String code;
     private String name;
     private double fee;
-    private String timeStart;
-    private String timeEnd;
     private double scoreToPass;
     private String day;
     private ArrayList<Student> studentInCourse;
@@ -76,21 +74,7 @@ public class Course extends StudentManagement{
         this.fee = fee;
     }
 
-    public String getTimeStart() {
-        return timeStart;
-    }
-
-    public void setTimeStart(String timeStart) {
-        this.timeStart = timeStart;
-    }
-
-    public String getTimeEnd() {
-        return timeEnd;
-    }
-
-    public void setTimeEnd(String timeEnd) {
-        this.timeEnd = timeEnd;
-    }
+    
 
     public double getScoreToPass() {
         return scoreToPass;
@@ -100,9 +84,6 @@ public class Course extends StudentManagement{
         this.scoreToPass = scoreToPass;
     }
 
-    public boolean isPass(double score) {
-        return score >= scoreToPass;
-    }
 
     public String getDay() {
         return day;
@@ -111,7 +92,16 @@ public class Course extends StudentManagement{
     public void setDay(String day) {
         this.day = day;
     }
-
+    public void isPass(){
+        for(Student student : studentInCourse){
+            if(student.getScore() > scoreToPass){
+                System.out.println(student.getName() + " : Pass course.");
+            }
+            else {
+                System.out.println(student.getName() +" : Fail course.");
+            }
+        }
+    }
     public void addCourse() {
         
         System.out.println("Enter code");
@@ -120,11 +110,7 @@ public class Course extends StudentManagement{
         setName(sc.nextLine());
         System.out.println("Enter day : ");
         setDay(sc.nextLine());
-        System.out.println("Enter time start : ");
-        setTimeStart(sc.nextLine());
-        System.out.println("Enter time end : ");
-        setTimeEnd(sc.nextLine());
-        System.out.println("Enter score to Pass");
+        System.out.println("Enter score to pass : ");
         setScoreToPass(sc.nextDouble());
         sc.nextLine();
     }
@@ -133,8 +119,7 @@ public class Course extends StudentManagement{
 
     @Override
     public String toString() {
-        return "Course [code=" + code + ", name=" + name + ", fee=" + fee + ", timeStart=" + timeStart + ", timeEnd="
-                + timeEnd + ", scoreToPass=" + scoreToPass + ", day=" + day + ", studentInCourse=" + studentInCourse
+        return "Course [code=" + code + ", name=" + name + ", fee=" + fee + ", timeStart=" + ", scoreToPass=" + scoreToPass + ", day=" + day + ", studentInCourse=" + studentInCourse
                 + ", teacherInCourse=" + teacherInCourse + "]";
     }
     

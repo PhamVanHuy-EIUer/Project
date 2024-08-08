@@ -4,13 +4,14 @@ public class Test {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         StudentManagement sm = new StudentManagement();
-        // sm.addCourses();
-        sm.addStudents();
+        sm.addCourses();
+        // sm.addStudents();
         // sm.addTeachers();
-        // sm.addRooms();
+        sm.addRooms();
+        int n;
         do{
             System.out.println("Enter option: ");
-            int n = sc.nextInt();
+             n = sc.nextInt();
             switch (n) {
                 case 1 -> {
                     sm.removeStudents();
@@ -28,8 +29,11 @@ public class Test {
                     sm.searchStudent();
                     break;
                 }
+                case 5 -> {
+                    sm.courseInRoom();
+                }
             }
-        }while(n>= 1 && n <= 4);
+        }while(n>= 1 && n <= 5);
         System.out.println("FINISHED");
     }
 }
