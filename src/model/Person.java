@@ -1,6 +1,9 @@
+package model;
+import java.io.Serializable;
 import java.util.Scanner;
 
-public abstract class Person {
+public abstract class Person implements Serializable {
+    private static final long serialVersionUID = 1L;
     static Scanner sc = new Scanner(System.in);
     private String name;
     private String id;

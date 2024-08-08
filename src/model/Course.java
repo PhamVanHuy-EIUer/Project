@@ -1,8 +1,11 @@
+package model;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import java.util.Scanner;
 
-public class Course extends StudentManagement{
+public class Course implements Serializable{
+    private static final long serialVersionUID = 1L;
     static Scanner sc = new Scanner(System.in);
     private String name;
     private String code;

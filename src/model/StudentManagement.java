@@ -1,3 +1,10 @@
+package model;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -93,26 +100,28 @@ public class StudentManagement {
             teachers.add(t);
         }
     }
-    public void checkPass(){
-        for(Course course : courses){
-            for (int i = 0 ; i < course.getStudentInCourse().size();i++){
-                if(course.getStudentInCourse().get(i).isPass(course.getScoreToPass())){
-                    System.out.println("Name : " +course.getStudentInCourse().get(i).getName() + " pass course " + course.getName());
-                }
-                else{
-                    System.out.println("Name : " +course.getStudentInCourse().get(i).getName() + " fail course " + course.getName());
+
+    public void checkPass() {
+        for (Course course : courses) {
+            for (int i = 0; i < course.getStudentInCourse().size(); i++) {
+                if (course.getStudentInCourse().get(i).isPass(course.getScoreToPass())) {
+                    System.out.println("Name : " + course.getStudentInCourse().get(i).getName() + " pass course "
+                            + course.getName());
+                } else {
+                    System.out.println("Name : " + course.getStudentInCourse().get(i).getName() + " fail course "
+                            + course.getName());
                 }
             }
         }
     }
-    public void checkKPA(){
-        for (Course course :courses){
-            for(int i = 0; i < course.getTeacherInCourse().size();i++){
-                if(course.getTeacherInCourse().get(i).isPass(course.getKpaJustice())){
-                    System.out.println(course.getTeacherInCourse().get(i).getName()+" reach KPA.");
-                }
-                else{
-                    System.out.println(course.getTeacherInCourse().get(i).getName()+" doesn't reach KPA.");
+
+    public void checkKPA() {
+        for (Course course : courses) {
+            for (int i = 0; i < course.getTeacherInCourse().size(); i++) {
+                if (course.getTeacherInCourse().get(i).isPass(course.getKpaJustice())) {
+                    System.out.println(course.getTeacherInCourse().get(i).getName() + " reach KPA.");
+                } else {
+                    System.out.println(course.getTeacherInCourse().get(i).getName() + " doesn't reach KPA.");
                 }
             }
         }
@@ -209,7 +218,7 @@ public class StudentManagement {
         System.out.println("Enter number: ");
         String num = sc.nextLine();
         for (Room room : rooms) {
-            if (room.getCode().equals(num)) {
+            if (room.getNumber().equals(num)) {
                 result.add(room);
                 break;
             }
@@ -238,9 +247,10 @@ public class StudentManagement {
             return s1.getClass().toString().compareTo(s2.getClass().toString());
         });
     }
-    public void sortTeacher(){
-        teachers.sort((t1,t2) -> {
-            if(t1.getClass().toString().compareTo(t2.getClass().toString()) == 0){
+
+    public void sortTeacher() {
+        teachers.sort((t1, t2) -> {
+            if (t1.getClass().toString().compareTo(t2.getClass().toString()) == 0) {
                 return t1.getId().compareTo(t2.getId());
             }
             return t1.getClass().toString().compareTo(t2.getClass().toString());
@@ -249,51 +259,164 @@ public class StudentManagement {
 
     public void courseInRoom() {
 
-        
-        for(int i = 0; i < rooms.size();i ++){
-            if( rooms.get(i).isEmpty()){
+        for (int i = 0; i < rooms.size(); i++) {
+            if (rooms.get(i).isEmpty()) {
                 System.out.println("Enter course for room : " + rooms.get(i).getNumber());
-                ArrayList <Course> courseInRoom = new ArrayList<>();
+                ArrayList<Course> courseInRoom = new ArrayList<>();
                 int shiftSchedule = rooms.get(i).getCourseInRoom().size();
                 System.out.println("Enter number of courses: ");
                 int c = sc.nextInt();
                 sc.nextLine();
-                for(int j = 0; j < c;j++){
+                for (int j = 0; j < c; j++) {
                     System.out.println("Enter Code of course: ");
                     String code = sc.nextLine();
-                    for(int k = 0; k < courses.size();k++){
-                        if(courses.get(k).getCode().equals(code) && rooms.get(i).isEmpty()) {
-                            boolean flat = true; 
-                            for(int z = 0; z < rooms.get(i).getCourseInRoom().size();z++){
-                                if(courses.get(k).getCode().equals(rooms.get(i).getCourseInRoom().get(z).getCode())){
+                    for (int k = 0; k < courses.size(); k++) {
+                        if (courses.get(k).getCode().equals(code) && rooms.get(i).isEmpty()) {
+                            boolean flat = true;
+                            for (int z = 0; z < rooms.get(i).getCourseInRoom().size(); z++) {
+                                if (courses.get(k).getCode().equals(rooms.get(i).getCourseInRoom().get(z).getCode())) {
                                     flat = false;
                                     break;
                                 }
                             }
-                            if(!flat){
+                            if (!flat) {
                                 System.out.println("Room is used.");
                                 break;
-                            }
-                            else{
+                            } else {
                                 courseInRoom.add(courses.get(k));
                                 shiftSchedule++;
                             }
                         }
                     }
-                    if(shiftSchedule == 2){
+                    if (shiftSchedule == 2) {
                         rooms.get(i).setEmpty(false);
                         break;
                     }
                 }
                 rooms.get(i).setCourseInRoom(courseInRoom);
 
-            }
-            else {
+            } else {
                 System.out.println("Room is unavailable. ");
             }
         }
-    }
-    public void writeFile(){
 
+    }
+
+    public void WriteFile1() {
+        try {
+            FileOutputStream file = new FileOutputStream("student.dat");
+            try (ObjectOutputStream oos = new ObjectOutputStream(file)) {
+                for (Student student : students) {
+                    oos.writeObject(student);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error write file");
+        }
+
+    }
+
+    public void ReadFile1() {
+        try {
+            FileInputStream file = new FileInputStream("student.dat");
+            try (ObjectInputStream ois = new ObjectInputStream(file)) {
+                Student st = null;
+                while ((st = (Student) ois.readObject()) != null) {
+                    students.add(st);
+
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class Not Found");
+        } catch (IOException e) {
+            System.out.println("Error read file");
+
+        }
+    }
+
+    public void WriteFile2() {
+        try {
+            FileOutputStream file = new FileOutputStream("course.dat");
+            try (ObjectOutputStream oos = new ObjectOutputStream(file)) {
+                for (Course course : courses) {
+                    oos.writeObject(course);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error write file");
+        }
+    }
+
+    public void ReadFile2() {
+        try {
+            FileInputStream file = new FileInputStream("course.dat");
+            try (ObjectInputStream ois = new ObjectInputStream(file)) {
+                Course c = null;
+                while ((c = (Course) ois.readObject()) != null) {
+                    courses.add(c);
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            System.out.println("Class not found");
+        } catch (IOException e) {
+            System.out.println("Error read file");
+        }
+    }
+
+    public void WriteFile3() {
+        try {
+            FileOutputStream file = new FileOutputStream("teacher.dat");
+            try (ObjectOutputStream oos = new ObjectOutputStream(file)) {
+                for (Teacher teacher : teachers) {
+                    oos.writeObject(teacher);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void ReadFile3(){
+        try{
+            FileInputStream file = new FileInputStream("teacher.dat");
+            try(ObjectInputStream ois = new ObjectInputStream(file)){
+                Teacher t = null;
+                while((t = (Teacher)ois.readObject()) != null){
+                    teachers.add(t);
+                }
+            }
+        } catch (ClassNotFoundException e){
+            System.out.println("Class Not Found");
+        } catch (IOException e){
+            System.out.println("Error Read File");
+        }
+    }
+    public void WriteFile4() {
+        try {
+            FileOutputStream file = new FileOutputStream("room.dat");
+            try (ObjectOutputStream oos = new ObjectOutputStream(file)) {
+                for (Room room :rooms) {
+                    oos.writeObject(room);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void ReadFile4(){
+        try{
+            FileInputStream file = new FileInputStream("room.dat");
+            try(ObjectInputStream ois = new ObjectInputStream(file)){
+                Room r = null;
+                while((r = (Room)ois.readObject()) != null){
+                    rooms.add(r);
+                }
+            }
+        } catch (ClassNotFoundException e){
+            System.out.println("Class Not Found");
+        } catch (IOException e){
+            System.out.println("Error Read File");
+        }
     }
 }

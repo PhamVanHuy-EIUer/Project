@@ -1,6 +1,8 @@
+package model;
 import java.util.Scanner;
 
 public class Teacher extends Person{
+    private static final long serialVersionUID = 1L;
     private double kpa;
     static Scanner sc = new Scanner(System.in);
     public Teacher() {
