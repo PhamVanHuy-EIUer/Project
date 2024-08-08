@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public abstract class StudentManagement {
+public class StudentManagement {
     private ArrayList<Student> students;
     private ArrayList<Teacher> teachers;
     private ArrayList<Course> courses;
@@ -22,7 +22,6 @@ public abstract class StudentManagement {
         this.courses = courses;
         this.rooms = rooms;
     }
-    public abstract void isPass();
 
     public void listStudents() {
         System.out.println("------------ALL INFORMATION OF STUDENT--------------");
@@ -92,6 +91,30 @@ public abstract class StudentManagement {
             Teacher t = new Teacher();
             t.Input();
             teachers.add(t);
+        }
+    }
+    public void checkPass(){
+        for(Course course : courses){
+            for (int i = 0 ; i < course.getStudentInCourse().size();i++){
+                if(course.getStudentInCourse().get(i).isPass(course.getScoreToPass())){
+                    System.out.println("Name : " +course.getStudentInCourse().get(i).getName() + " pass course " + course.getName());
+                }
+                else{
+                    System.out.println("Name : " +course.getStudentInCourse().get(i).getName() + " fail course " + course.getName());
+                }
+            }
+        }
+    }
+    public void checkKPA(){
+        for (Course course :courses){
+            for(int i = 0; i < course.getTeacherInCourse().size();i++){
+                if(course.getTeacherInCourse().get(i).isPass(course.getKpaJustice())){
+                    System.out.println(course.getTeacherInCourse().get(i).getName()+" reach KPA.");
+                }
+                else{
+                    System.out.println(course.getTeacherInCourse().get(i).getName()+" doesn't reach KPA.");
+                }
+            }
         }
     }
 
@@ -215,6 +238,14 @@ public abstract class StudentManagement {
             return s1.getClass().toString().compareTo(s2.getClass().toString());
         });
     }
+    public void sortTeacher(){
+        teachers.sort((t1,t2) -> {
+            if(t1.getClass().toString().compareTo(t2.getClass().toString()) == 0){
+                return t1.getId().compareTo(t2.getId());
+            }
+            return t1.getClass().toString().compareTo(t2.getClass().toString());
+        });
+    }
 
     public void courseInRoom() {
 
@@ -234,17 +265,13 @@ public abstract class StudentManagement {
                         if(courses.get(k).getCode().equals(code) && rooms.get(i).isEmpty()) {
                             boolean flat = true; 
                             for(int z = 0; z < rooms.get(i).getCourseInRoom().size();z++){
-                                if(!courses.get(k).getDay().equals(rooms.get(i).getCourseInRoom().get(z).getDay()) 
-                                && !courses.get(k).getCode().equals(rooms.get(i).getCourseInRoom().get(z).getCode())){
-                                    flat = true;
-                                }
-                                else{
+                                if(courses.get(k).getCode().equals(rooms.get(i).getCourseInRoom().get(z).getCode())){
                                     flat = false;
                                     break;
                                 }
                             }
                             if(!flat){
-                                System.out.println("Room is unavailable");
+                                System.out.println("Room is used.");
                                 break;
                             }
                             else{
@@ -265,5 +292,8 @@ public abstract class StudentManagement {
                 System.out.println("Room is unavailable. ");
             }
         }
+    }
+    public void writeFile(){
+
     }
 }

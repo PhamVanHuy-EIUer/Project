@@ -24,6 +24,7 @@ public class Student extends Person {
     public void setTuitionFee(double tuitionFee) {
         this.tuitionFee = tuitionFee;
     }
+    
     @Override
     public void Input() {
         
@@ -35,6 +36,13 @@ public class Student extends Person {
     public void Output() {
         super.Output();
         System.out.println("Score : " + getScore());
+    }
+    @Override
+    public boolean isPass(double scoreToPass) {
+        if(score >= scoreToPass){
+            return true;
+        }
+        return false;
     }
 
     

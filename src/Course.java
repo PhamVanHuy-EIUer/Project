@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class Course extends StudentManagement{
     static Scanner sc = new Scanner(System.in);
-    private String code;
     private String name;
+    private String code;
     private double fee;
     private double scoreToPass;
     private String day;
+    private double kpaJustice;
     private ArrayList<Student> studentInCourse;
     private ArrayList<Teacher> teacherInCourse;
 
@@ -85,6 +86,18 @@ public class Course extends StudentManagement{
     }
 
 
+    public double getKpaJustice() {
+        return kpaJustice;
+    }
+
+
+
+    public void setKpaJustice(double kpaJustice) {
+        this.kpaJustice = kpaJustice;
+    }
+
+
+
     public String getDay() {
         return day;
     }
@@ -92,16 +105,7 @@ public class Course extends StudentManagement{
     public void setDay(String day) {
         this.day = day;
     }
-    public void isPass(){
-        for(Student student : studentInCourse){
-            if(student.getScore() > scoreToPass){
-                System.out.println(student.getName() + " : Pass course.");
-            }
-            else {
-                System.out.println(student.getName() +" : Fail course.");
-            }
-        }
-    }
+    
     public void addCourse() {
         
         System.out.println("Enter code");
@@ -112,6 +116,8 @@ public class Course extends StudentManagement{
         setDay(sc.nextLine());
         System.out.println("Enter score to pass : ");
         setScoreToPass(sc.nextDouble());
+        System.out.println("Enter KPA for course: ");
+        setKpaJustice(sc.nextDouble());
         sc.nextLine();
     }
 
@@ -119,8 +125,15 @@ public class Course extends StudentManagement{
 
     @Override
     public String toString() {
-        return "Course [code=" + code + ", name=" + name + ", fee=" + fee + ", timeStart=" + ", scoreToPass=" + scoreToPass + ", day=" + day + ", studentInCourse=" + studentInCourse
-                + ", teacherInCourse=" + teacherInCourse + "]";
+        return "Course [name=" + name + ", code=" + code + ", fee=" + fee + ", scoreToPass=" + scoreToPass + ", day="
+                + day + ", kpaJustice=" + kpaJustice + "]";
     }
+
+
+
     
+
+
+
+   
 }

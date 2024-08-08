@@ -20,6 +20,12 @@ public class Teacher extends Person{
     public void setKpa(double kpa) {
         this.kpa = kpa;
     }
+    public boolean isPass(double scoreToPass){
+        if(kpa >= scoreToPass){
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public void Input() {

@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Person {
+public abstract class Person {
     static Scanner sc = new Scanner(System.in);
     private String name;
     private String id;
@@ -54,6 +54,7 @@ public class Person {
     public void setIdMajor(String idMajor) {
         this.idMajor = idMajor;
     }
+    public abstract boolean isPass(double scoreToPass);
     public void Input(){
         
         System.out.println("Enter Name : " );
