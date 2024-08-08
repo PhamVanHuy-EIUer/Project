@@ -128,8 +128,8 @@ public class Course implements Serializable{
 
     @Override
     public String toString() {
-        return "Course [name=" + name + ", code=" + code + ", fee=" + fee + ", scoreToPass=" + scoreToPass + ", day="
-                + day + ", kpaJustice=" + kpaJustice + "]";
+        return "Name: " + name + "\nCode: " + code + "\nFee=" + fee + "\nScoreToPass=" + scoreToPass + "\nDay="
+                + day + "\nKpaJustice=" + kpaJustice ;
     }
 
 

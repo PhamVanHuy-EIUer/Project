@@ -56,6 +56,10 @@ public class Room implements Serializable{
         setEmpty(sc.nextBoolean());
         sc.nextLine();
     }
+    @Override
+    public String toString() {
+        return "Number: " + number + "\nCapacity: " + capacity + "\nisEmpty: " + isEmpty ;
+    }
     
     
 }

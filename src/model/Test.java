@@ -5,10 +5,10 @@ public class Test {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         StudentManagement sm = new StudentManagement();
-        sm.addCourses();
+        // sm.addCourses();
         // sm.addStudents();
-        // sm.addTeachers();
-        sm.addRooms();
+         sm.addTeachers();
+        // sm.addRooms();
         int n;
         do{
             System.out.println("Enter option: ");
@@ -27,7 +27,8 @@ public class Test {
                     break;
                 }
                 case 4->{
-                    sm.searchStudent();
+                    sm.searchTeacher();
+                    sm.searchTeacher().
                     break;
                 }
                 case 5 -> {

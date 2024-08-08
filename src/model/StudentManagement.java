@@ -186,57 +186,48 @@ public class StudentManagement {
 
     }
 
-    public ArrayList<Course> searchCourse() {
-        ArrayList<Course> result = new ArrayList<>();
+    public void searchCourse() {
         System.out.println("Enter code: ");
         String code = sc.nextLine();
         for (Course course : courses) {
             if (course.getCode().equals(code)) {
-                result.add(course);
+                System.out.println(course);
                 break;
             }
         }
-        return result;
-
     }
 
-    public ArrayList<Student> searchStudent() {
-        ArrayList<Student> result = new ArrayList<>();
+    public void searchStudent() {
         System.out.println("Enter ID: ");
         String id = sc.nextLine();
         for (Student student : students) {
             if (student.getId().equals(id)) {
-                result.add(student);
+                student.Output();
                 break;
             }
         }
-        return result;
     }
 
-    public ArrayList<Room> searchRoom() {
-        ArrayList<Room> result = new ArrayList<>();
+    public void searchRoom() {
         System.out.println("Enter number: ");
         String num = sc.nextLine();
         for (Room room : rooms) {
             if (room.getNumber().equals(num)) {
-                result.add(room);
+                System.out.println(room);
                 break;
             }
         }
-        return result;
     }
 
-    public ArrayList<Teacher> searchTeacher() {
-        ArrayList<Teacher> result = new ArrayList<>();
+    public void searchTeacher() {
         System.out.println("Enter ID: ");
         String id = sc.nextLine();
         for (Teacher teacher : teachers) {
             if (teacher.getId().equals(id)) {
-                result.add(teacher);
+                teacher.Output();
                 break;
             }
         }
-        return result;
     }
 
     public void sortStudents() {
@@ -376,26 +367,27 @@ public class StudentManagement {
         }
     }
 
-    public void ReadFile3(){
-        try{
+    public void ReadFile3() {
+        try {
             FileInputStream file = new FileInputStream("teacher.dat");
-            try(ObjectInputStream ois = new ObjectInputStream(file)){
+            try (ObjectInputStream ois = new ObjectInputStream(file)) {
                 Teacher t = null;
-                while((t = (Teacher)ois.readObject()) != null){
+                while ((t = (Teacher) ois.readObject()) != null) {
                     teachers.add(t);
                 }
             }
-        } catch (ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             System.out.println("Class Not Found");
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Error Read File");
         }
     }
+
     public void WriteFile4() {
         try {
             FileOutputStream file = new FileOutputStream("room.dat");
             try (ObjectOutputStream oos = new ObjectOutputStream(file)) {
-                for (Room room :rooms) {
+                for (Room room : rooms) {
                     oos.writeObject(room);
                 }
             }
@@ -404,18 +396,18 @@ public class StudentManagement {
         }
     }
 
-    public void ReadFile4(){
-        try{
+    public void ReadFile4() {
+        try {
             FileInputStream file = new FileInputStream("room.dat");
-            try(ObjectInputStream ois = new ObjectInputStream(file)){
+            try (ObjectInputStream ois = new ObjectInputStream(file)) {
                 Room r = null;
-                while((r = (Room)ois.readObject()) != null){
+                while ((r = (Room) ois.readObject()) != null) {
                     rooms.add(r);
                 }
             }
-        } catch (ClassNotFoundException e){
+        } catch (ClassNotFoundException e) {
             System.out.println("Class Not Found");
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println("Error Read File");
         }
     }
