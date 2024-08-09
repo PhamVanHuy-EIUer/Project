@@ -134,7 +134,7 @@ public class Course implements Serializable{
 
     public void FileWriteStudentInCourse(){
         try{
-        FileOutPut file = new FileOutPut("studentInCourse.dat");
+        FileOutPutStream file = new FileOutPutStream("studentInCourse.dat");
         try(ObjectOutPutSteam oos = new ObjectOutPutSteam(file)){
             for(Student student: studentInCourse){
                 oos.writeObject(student);
@@ -145,6 +145,11 @@ public class Course implements Serializable{
         }
     }
     public void FileReadStudentInCourse(){
-        
+        try{
+            FileInputStream file = new FileInputStream("studentInCourse.dat");
+            try(ObjectInPutStream ois = new ObjectInPutStream(file)){
+                
+            }
+        }
     }
 }
