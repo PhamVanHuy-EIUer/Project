@@ -54,13 +54,11 @@ public class StudentManagement {
 
     public void addStudentsInCourse() {
         for (Course course : courses) {
-            ArrayList<Student> addStudents = new ArrayList<>();
             for (Student student : students) {
                 if (student.getIdMajor().equals(course.getCode())) {
-                    addStudents.add(student);
+                    course.setStudentInCourse(student);
                 }
             }
-            course.setStudentInCourse(addStudents);
         }
     }
 
@@ -129,13 +127,11 @@ public class StudentManagement {
 
     public void addTeachersInCourse() {
         for (Course course : courses) {
-            ArrayList<Teacher> addTeachers = new ArrayList<>();
             for (Teacher teacher : teachers) {
                 if (teacher.getIdMajor().equals(course.getCode())) {
-                    addTeachers.add(teacher);
+                    course.setTeacherInCourse(teacher);
                 }
             }
-            course.setTeacherInCourse(addTeachers);
         }
     }
 
@@ -265,7 +261,8 @@ public class StudentManagement {
                         if (courses.get(k).getCode().equals(code) && rooms.get(i).isEmpty()) {
                             boolean flat = true;
                             for (int z = 0; z < rooms.get(i).getCourseInRoom().size(); z++) {
-                                if (courses.get(k).getCode().equals(rooms.get(i).getCourseInRoom().get(z).getCode())) {
+                                if (courses.get(k).getCode().equals(rooms.get(i).getCourseInRoom().get(z).getCode())
+                                && courses.get(k).getStudentInCourse().size() > rooms.get(i).getCapacity()) {
                                     flat = false;
                                     break;
                                 }

@@ -36,8 +36,8 @@ public class Course implements Serializable{
 
 
 
-    public void setTeacherInCourse(ArrayList<Teacher> t) {
-        this.teacherInCourse = t;
+    public void setTeacherInCourse(Teacher t) {
+        this.teacherInCourse.add(t);
     }
 
 
@@ -49,8 +49,8 @@ public class Course implements Serializable{
 
 
 
-    public void setStudentInCourse(ArrayList<Student> s) {
-        this.studentInCourse = s;
+    public void setStudentInCourse(Student s) {
+        this.studentInCourse.add(s);
     }
 
 
