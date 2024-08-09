@@ -132,11 +132,19 @@ public class Course implements Serializable{
                 + day + "\nKpaJustice=" + kpaJustice ;
     }
 
-
-
-    
-
-
-
-   
+    public void FileWriteStudentInCourse(){
+        try{
+        FileOutPut file = new FileOutPut("studentInCourse.dat");
+        try(ObjectOutPutSteam oos = new ObjectOutPutSteam(file)){
+            for(Student student: studentInCourse){
+                oos.writeObject(student);
+            }
+        } catch (IOException e){
+            System.out.print("Error Write File")
+        }
+        }
+    }
+    public void FileReadStudentInCourse(){
+        
+    }
 }

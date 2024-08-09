@@ -81,6 +81,7 @@ public abstract class Person implements Serializable {
         System.out.println("Adress : " + getAddress());
         System.out.println("Major : " + getIdMajor());
     }
+    
 }
 
     
