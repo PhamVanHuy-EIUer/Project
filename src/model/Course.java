@@ -148,7 +148,10 @@ public class Course implements Serializable{
         try{
             FileInputStream file = new FileInputStream("studentInCourse.dat");
             try(ObjectInPutStream ois = new ObjectInPutStream(file)){
-                
+                Student st =null;
+                while((st = (Student)ois.readObject()) != null){
+                    studentInCourse.add(st);
+                }
             }
         }
     }
