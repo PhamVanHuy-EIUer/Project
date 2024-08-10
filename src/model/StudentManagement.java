@@ -290,7 +290,7 @@ public class StudentManagement {
 
     }
 
-    public void WriteFile1() {
+    public void WriteStudents() {
         try {
             FileOutputStream file = new FileOutputStream("student.dat");
             try (ObjectOutputStream oos = new ObjectOutputStream(file)) {
@@ -304,7 +304,7 @@ public class StudentManagement {
 
     }
 
-    public void ReadFile1() {
+    public void ReadStudents() {
         try {
             FileInputStream file = new FileInputStream("student.dat");
             try (ObjectInputStream ois = new ObjectInputStream(file)) {
@@ -322,7 +322,7 @@ public class StudentManagement {
         }
     }
 
-    public void WriteFile2() {
+    public void WriteCourses() {
         try {
             FileOutputStream file = new FileOutputStream("course.dat");
             try (ObjectOutputStream oos = new ObjectOutputStream(file)) {
@@ -335,7 +335,7 @@ public class StudentManagement {
         }
     }
 
-    public void ReadFile2() {
+    public void ReadCourses() {
         try {
             FileInputStream file = new FileInputStream("course.dat");
             try (ObjectInputStream ois = new ObjectInputStream(file)) {
@@ -351,7 +351,7 @@ public class StudentManagement {
         }
     }
 
-    public void WriteFile3() {
+    public void WriteTeachers() {
         try {
             FileOutputStream file = new FileOutputStream("teacher.dat");
             try (ObjectOutputStream oos = new ObjectOutputStream(file)) {
@@ -364,7 +364,7 @@ public class StudentManagement {
         }
     }
 
-    public void ReadFile3() {
+    public void ReadTeachers() {
         try {
             FileInputStream file = new FileInputStream("teacher.dat");
             try (ObjectInputStream ois = new ObjectInputStream(file)) {
@@ -380,7 +380,7 @@ public class StudentManagement {
         }
     }
 
-    public void WriteFile4() {
+    public void WriteRooms() {
         try {
             FileOutputStream file = new FileOutputStream("room.dat");
             try (ObjectOutputStream oos = new ObjectOutputStream(file)) {
@@ -393,7 +393,7 @@ public class StudentManagement {
         }
     }
 
-    public void ReadFile4() {
+    public void ReadRooms() {
         try {
             FileInputStream file = new FileInputStream("room.dat");
             try (ObjectInputStream ois = new ObjectInputStream(file)) {

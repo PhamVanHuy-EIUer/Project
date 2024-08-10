@@ -5,10 +5,7 @@ public class Test {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         StudentManagement sm = new StudentManagement();
-        sm.ReadFile1();
-        sm.ReadFile2();
-        sm.ReadFile3();
-        sm.ReadFile4();
+        
         // sm.addCourses();
         // sm.addStudents();
         //  sm.addTeachers();
@@ -32,23 +29,23 @@ public class Test {
                 case 1 -> {
                     sm.addStudents();
                     sm.addStudentsInCourse();
-                    sm.WriteFile1();
+                    sm.WriteStudents();
                     break;
                 }
                 case 2->{
                     sm.addTeachers();
                     sm.addTeachersInCourse();
-                    sm.WriteFile3();
+                    sm.WriteTeachers();
                     break;
                 }
                 case 3 ->{
                     sm.addCourses();
-                    sm.WriteFile2();
+                    sm.WriteCourses();
                     break;
                 }
                 case 4->{
                     sm.addRooms();
-                    sm.ReadFile4();
+                    sm.WriteRooms();
                     break;
                 }
                 case 5 -> {
@@ -69,11 +66,12 @@ public class Test {
                 }
                 case 9 -> {
                     sm.sortStudents();
-                    sm.WriteFile1();
+                    sm.WriteStudents();
                     break;
                 }
                 case 10 ->{
                     sm.sortTeacher();
+                    sm.WriteTeachers();
                     break;
                 }
                 case 11->{

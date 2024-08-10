@@ -1,8 +1,15 @@
 package model;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
 import java.util.Scanner;
+
+import javax.swing.plaf.synth.SynthSplitPaneUI;
 
 public class Course implements Serializable{
     private static final long serialVersionUID = 1L;
@@ -134,25 +141,57 @@ public class Course implements Serializable{
 
     public void FileWriteStudentInCourse(){
         try{
-        FileOutPutStream file = new FileOutPutStream("studentInCourse.dat");
-        try(ObjectOutPutSteam oos = new ObjectOutPutSteam(file)){
-            for(Student student: studentInCourse){
-                oos.writeObject(student);
+            FileOutputStream file = new FileOutputStream("studenInCourse");
+            try(ObjectOutputStream oos = new ObjectOutputStream(file)){
+                for(Student st : studentInCourse){
+                    oos.writeObject(st);
+                }
             }
-        } catch (IOException e){
-            System.out.print("Error Write File")
-        }
+        } catch (IOException e) {
+            System.out.println("Error Write File");
         }
     }
     public void FileReadStudentInCourse(){
         try{
             FileInputStream file = new FileInputStream("studentInCourse.dat");
-            try(ObjectInPutStream ois = new ObjectInPutStream(file)){
+            try(ObjectInputStream ois = new ObjectInputStream(file)){
                 Student st =null;
                 while((st = (Student)ois.readObject()) != null){
                     studentInCourse.add(st);
                 }
             }
+        } catch (ClassNotFoundException e){
+            System.out.println("Class Not Found");
+        }catch(IOException e){
+            System.out.println("Error Read File");
+        }
+    } 
+    public void FileWriteTeacherInCourse(){
+        try{
+            FileOutputStream file = new FileOutputStream("teacherInCourse.dat");
+            try(ObjectOutputStream oos = new ObjectOutputStream(file)){
+                for(Teacher teacher : teacherInCourse){
+                    oos.writeObject(teacher);
+                }
+            }
+        } catch(IOException e){
+            System.out.println("Error Write File");
+        }
+    }
+    public void FileReadTeacherInCourse(){
+        try{
+            FileInputStream file = new FileInputStream("teacherInCourse.dat");
+            try(ObjectInputStream ois = new ObjectInputStream(file)){
+                Teacher t = null;
+                while((t = (Teacher)ois.readObject()) != null){
+                    teacherInCourse.add(t);
+                }
+            }
+        }catch(ClassNotFoundException e){
+            System.out.println("Class Not Found ");
+        }catch (IOException e){
+            System.out.println("Error Read File");
         }
     }
 }
+
