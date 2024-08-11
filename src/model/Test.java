@@ -5,6 +5,15 @@ public class Test {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         StudentManagement sm = new StudentManagement();
+        Course c = new Course();
+        Room r = new Room();
+        sm.ReadStudents();
+        sm.ReadTeachers();
+        sm.ReadCourses();
+        sm.ReadRooms();
+        c.FileReadStudentInCourse();
+        c.FileReadTeacherInCourse();
+        r.ReadFileCourseInRoom();
         
         // sm.addCourses();
         // sm.addStudents();
@@ -30,12 +39,14 @@ public class Test {
                     sm.addStudents();
                     sm.addStudentsInCourse();
                     sm.WriteStudents();
+                    c.FileWriteStudentInCourse();
                     break;
                 }
                 case 2->{
                     sm.addTeachers();
                     sm.addTeachersInCourse();
                     sm.WriteTeachers();
+                    c.FileWriteTeacherInCourse();
                     break;
                 }
                 case 3 ->{
@@ -50,6 +61,7 @@ public class Test {
                 }
                 case 5 -> {
                     sm.removeStudents();
+                    sm.WriteStudents();
                     break;
                 }
                 case 6 -> {
@@ -76,6 +88,7 @@ public class Test {
                 }
                 case 11->{
                     sm.courseInRoom();
+                    r.WriteFileCourseInRoom();
                 }
             }
         }while(n>= 1 && n <= 11);
