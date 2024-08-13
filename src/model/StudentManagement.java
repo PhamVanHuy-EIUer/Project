@@ -61,6 +61,11 @@ public class StudentManagement {
             }
         }
     }
+    public void showAllStudent(){
+        for(Student student : students){
+            student.Output();
+        }
+    }
 
     public void removeStudents() {
         System.out.println("Enter number to remove students: ");
@@ -96,6 +101,11 @@ public class StudentManagement {
             Teacher t = new Teacher();
             t.Input();
             teachers.add(t);
+        }
+    }
+    public void showAllTeacher(){
+        for(Teacher teacher : teachers){
+            teacher.Output();
         }
     }
 
@@ -181,6 +191,11 @@ public class StudentManagement {
         }
 
     }
+    public void showAllCourse(){
+        for(Course course:courses){
+            System.out.println(course);
+        }
+    }
 
     public void searchCourse() {
         System.out.println("Enter code: ");
@@ -222,6 +237,30 @@ public class StudentManagement {
             if (teacher.getId().equals(id)) {
                 teacher.Output();
                 break;
+            }
+        }
+    }
+    public void showStudentsInCourse(){
+        System.out.println("Enter ID Course");
+        String a = sc.nextLine();
+        for(Course course:courses){
+            if(course.getCode().equals(a)){
+                for(int i =0; i < course.getStudentInCourse().size();i++){
+                    System.out.println(course.getStudentInCourse().get(i).getId());
+                    System.out.println(course.getStudentInCourse().get(i).getName());
+                }
+            }
+        }
+    }
+    public void showTeacherInCourse(){
+        System.out.println("Enter ID Course");
+        String a = sc.nextLine();
+        for(Course course: courses){
+            if(course.getCode().equals(a)){
+                for(int i = 0; i < course.getTeacherInCourse().size();i++){
+                    System.out.println(course.getTeacherInCourse().get(i).getId());
+                    System.out.println(course.getTeacherInCourse().get(i).getName());
+                }
             }
         }
     }
